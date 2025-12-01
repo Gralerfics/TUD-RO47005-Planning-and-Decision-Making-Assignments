@@ -181,7 +181,7 @@ This difference affects their performance in terms of efficiency and optimality,
 
 === Answer 4.1
 
-TODO
+Similar to Question 3.1, the steps for Dijkstra's algorithm are shown in @tbl:4-1-dijkstra.
 
 #figure(
     caption: "Steps of Dijkstra's algorithm for Question 4.1.",
@@ -198,28 +198,31 @@ TODO
             ),
             [], [*S(., 0)*, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, GO],
             [S(., 0)], [*B(S, 1)*, *A(S, 3)*, *D(S, 4)*, C, E, F, G, H, I, J, K, L, M, N, O, GO],
-            [S, B(S, 1)], [A(S, 3), D(S, 4), *H(B, 2)*, C, E(B, 7), F, G, I, J, K, L, M, N, O, GO],
-            [S, B, H(B, 2)], [A(S, 3), D(S, 4), *O(H, 4)*, C, E(B, 7), *G(H, 6)*, F, I(H, 8), J, K, L, M, N, GO],
-            [S, B, H, A(S, 3)], [D(S, 4), O(H, 4), *C(A, 5)*, E(B, 7), G(H, 6), F, I(H, 8), J, K, L, M, N, GO],
-            [S, B, H, A, D(S, 4)], [O(H, 4), C(A, 5), *L(D, 6)*, E(B, 7), G(H, 6), F, I(H, 8), J, K, M, N, GO],
-            [S, B, H, A, D, O(H, 4)], [C(A, 5), L(D, 6), *L(O, 6)*, G(H, 6), E(B, 7), I(H, 8), F, J, K, M, N, GO],
+            [S, B(S, 1)], [*H(B, 2)*, A(S, 3), D(S, 4), C, E(B, 7), F, G, I, J, K, L, M, N, O, GO],
+            [S, B, H(B, 2)], [A(S, 3), D(S, 4), *O(H, 4)*, *G(H, 6)*, E(B, 7), I(H, 8), C, F, J, K, L, M, N, GO],
+            [S, B, H, A(S, 3)], [D(S, 4), O(H, 4), *C(A, 5)*, G(H, 6), E(B, 7), I(H, 8), F, J, K, L, M, N, GO],
+            [S, B, H, A, D(S, 4)], [O(H, 4), C(A, 5), *L(D, 6)*, G(H, 6), E(B, 7), I(H, 8), F, J, K, M, N, GO],
+            [S, B, H, A, D, O(H, 4)], [C(A, 5), *L(D/O, 6)*, G(H, 6), E(B, 7), I(H, 8), F, J, K, M, N, GO],
             [S, B, H, A, D, O, C(A, 5)], [L(D/O, 6), *F(C, 6)*, G(H, 6), E(B, 7), I(H, 8), *GO(C, 14)*, J, K, M, N],
             [S, B, H, A, D, O, C, L(D/O, 6)], [F(C, 6), G(H, 6), E(B, 7), I(H, 8), GO(C, 14), J, K, M, N],
-            [S, B, H, A, D, O, C, L, F(C, 6)], [G(H, 6), E(B, 7), I(H, 8), GO(C, 14), *D(F, 7)*, J, K, M, N],
-            [S, B, H, A, D, O, C, L, F, G(H, 6)], [E(B, 7), I(H, 8), GO(C, 14), *K(G, 9)*, J, M, N],
-            [S, B, H, A, D, O, C, L, F, G, E(B, 7)], [I(H, 8), GO(C, 14), K(G, 9), *J(E, 11)*, M, N],
-            [S, B, H, A, D, O, C, L, F, G, E, I(H, 8)], [GO(C, 14), K(G, 9), J(E, 11), *N(K, 10)*, M],
-            [S, B, H, A, D, O, C, L, F, G, E, I, K(G, 9)], [GO(C, 14), J(E, 11), *N(K, 10)*, *M(N, 12)*],
-            [S, B, H, A, D, O, C, L, F, G, E, I, K, N(K, 10)], [GO(C, 14), J(E, 11), M(N, 12)],
-            [S, B, H, A, D, O, C, L, F, G, E, I, K, N, J(E, 11)], [GO(C, 14), *GO(J, 14)*, M(N, 12), *G(J, 14)*],
-            [S, B, H, A, D, O, C, L, F, G, E, I, K, N, J, M(N, 12)], [GO(C/J, 14), *GO(M, 14)*, G(J, 14)],
-            [S, B, H, A, D, O, C, L, F, G, E, I, K, N, J, M, GO(C/J/M, 14)], []
+            [S, B, H, A, D, O, C, L, F(C, 6)], [G(H, 6), E(B, 7), I(H, 8), GO(C, 14), J, K, M, N],
+            [S, B, H, A, D, O, C, L, F, G(H, 6)], [E(B, 7), I(H, 8), *K(G, 9)*, GO(C, 14), J, M, N],
+            [S, B, H, A, D, O, C, L, F, G, E(B, 7)], [I(H, 8), K(G, 9), *J(E, 11)*, GO(C, 14), M, N],
+            [S, B, H, A, D, O, C, L, F, G, E, I(H, 8)], [K(G, 9), *N(K, 10)*, J(E, 11), GO(C, 14), M],
+            [S, B, H, A, D, O, C, L, F, G, E, I, K(G, 9)], [*N(K, 10)*, J(E, 11), *M(N, 12)*, GO(C, 14)],
+            [S, B, H, A, D, O, C, L, F, G, E, I, K, N(K, 10)], [J(E, 11), M(N, 12), GO(C, 14)],
+            [S, B, H, A, D, O, C, L, F, G, E, I, K, N, J(E, 11)], [M(N, 12), *GO(C/J, 14)*],
+            [S, B, H, A, D, O, C, L, F, G, E, I, K, N, J, M(N, 12)], [*GO(C/J/M, 14)*]
         )
     ])
 ] <tbl:4-1-dijkstra>
+
+#underline([As a result, there are several shortest paths found by Dijkstra's algorithm, one of which is $S -> A -> C -> G O$ with a cost of $14$.])
 
 \
 
 === Answer 4.2
 
-TODO
+The screenshot of the implemented part and the result is shown below:
+
+#image("figures/a4.2_screenshot.png")
