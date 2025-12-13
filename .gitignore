@@ -22,5 +22,5 @@ re
 
 .~lock.grades.csv#
 
-miniforge3/
+**/miniforge3/
 **/__pycache__/

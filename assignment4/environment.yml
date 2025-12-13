@@ -1,0 +1,6 @@
+name: pdm4
+channels:
+  - defaults
+dependencies:
+  - python=3.8.13 # Python! Not using latest version as some libs lack support
+  - pip=22.2.2
